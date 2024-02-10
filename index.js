@@ -189,6 +189,14 @@ app.post("/login", async (req, res) => {
     }
 })
 
+// Creating Endpoint for newCollection data
+app.get("/newcollections", async (req, res) => {
+    let products = await Product.find({});
+    let newCollection = products.slice(1).slice(-8);
+    console.log("New Collection Fetched.")
+    res.send(newCollection);
+})
+
 app.listen(port, (error) => {
     if (!error) {
         console.log("Server Running on Port" + port)
